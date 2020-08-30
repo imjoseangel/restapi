@@ -14,4 +14,4 @@ def home():
     :return:        json string of list of people
     """
     # Create the list of people from our data
-    return redirect("http://localhost:5000/ui", code=302)
+    return redirect("./ui", code=302)
