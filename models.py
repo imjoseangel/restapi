@@ -11,7 +11,7 @@ class Inventory(db.Model):
         db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
 
-class InventorySchema(ma.ModelSchema):
+class InventorySchema(ma.SQLAlchemySchema):
     class Meta:
         model = Inventory
         sqla_session = db.session
