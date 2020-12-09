@@ -22,13 +22,9 @@ ADD models.py models.py
 ADD server.py server.py
 ADD ui.py ui.py
 ADD swagger.yml swagger.yml
+ADD requirements.txt requirements.txt
 
-# RUN pip install --upgrade pip
-RUN pip3 install connexion
-RUN pip3 install connexion[swagger-ui]
-RUN pip3 install flask_sqlalchemy
-RUN pip3 install flask_marshmallow
-RUN pip3 install marshmallow-sqlalchemy
+RUN pip3 install -r requirements.txt
 
 RUN python3 build_database.py
 
