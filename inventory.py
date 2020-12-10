@@ -36,7 +36,7 @@ def read_one(inventory_id):
     inventory = Inventory.query.filter(
         Inventory.inventory_id == inventory_id).one_or_none()
 
-    # Did we find a invetnory?
+    # Did we find a inventory?
     if inventory is not None:
 
         # Serialize the data for the response
@@ -113,7 +113,7 @@ def update(inventory_id, inventory):
         update = schema.load(inventory, session=db.session)
 
         # Set the id to the inventory we want to update
-        update.id = update_inventory.inventory_id
+        update.inventory_id = update_inventory.inventory_id
 
         # merge the new object into the old and commit it to the db
         db.session.merge(update)
