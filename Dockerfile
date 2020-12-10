@@ -24,6 +24,7 @@ ADD ui.py ui.py
 ADD swagger.yml swagger.yml
 ADD requirements.txt requirements.txt
 
+RUN pip3 install connexion[swagger-ui]
 RUN pip3 install -r requirements.txt
 
 RUN python3 build_database.py
