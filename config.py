@@ -21,6 +21,3 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Create the SqlAlchemy db instance
 db = SQLAlchemy(app)
-
-# Initialize Marshmallow
-ma = Marshmallow(app)

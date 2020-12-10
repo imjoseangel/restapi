@@ -1,5 +1,6 @@
 from datetime import datetime
-from config import db, ma
+from config import db
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 
 class Inventory(db.Model):
@@ -11,7 +12,9 @@ class Inventory(db.Model):
         db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
 
-class InventorySchema(ma.SQLAlchemySchema):
+class InventorySchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Inventory
-        sqla_session = db.session
+        include_fk = True
+        include_relationships = True
+        load_instance = True

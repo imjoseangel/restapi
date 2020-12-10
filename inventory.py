@@ -20,7 +20,7 @@ def read_all():
 
     # Serialize the data for the response
     inventory_schema = InventorySchema(many=True)
-    data = inventory_schema.dump(inventory).data
+    data = inventory_schema.dump(inventory)
     return data
 
 
@@ -41,7 +41,7 @@ def read_one(inventory_id):
 
         # Serialize the data for the response
         inventory_schema = InventorySchema()
-        data = inventory_schema.dump(inventory).data
+        data = inventory_schema.dump(inventory)
         return data
 
     # Otherwise, nope, didn't find that item
@@ -73,14 +73,14 @@ def create(inventory):
 
         # Create a inventory instance using the schema and the passed in item
         schema = InventorySchema()
-        new_inventory = schema.load(inventory, session=db.session).data
+        new_inventory = schema.load(inventory, session=db.session)
 
         # Add the inventory to the database
         db.session.add(new_inventory)
         db.session.commit()
 
         # Serialize and return the newly created inventory in the response
-        data = schema.dump(new_inventory).data
+        data = schema.dump(new_inventory)
 
         return data, 201
 
@@ -110,7 +110,7 @@ def update(inventory_id, inventory):
 
         # turn the passed in inventory into a db object
         schema = InventorySchema()
-        update = schema.load(inventory, session=db.session).data
+        update = schema.load(inventory, session=db.session)
 
         # Set the id to the inventory we want to update
         update.id = update_inventory.inventory_id
@@ -120,7 +120,7 @@ def update(inventory_id, inventory):
         db.session.commit()
 
         # return updated inventory in the response
-        data = schema.dump(update_inventory).data
+        data = schema.dump(update_inventory)
 
         return data, 200
 
